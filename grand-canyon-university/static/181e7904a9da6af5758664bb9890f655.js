@@ -615,7 +615,7 @@ submitLead:function(){
             LastName: $("#last_name").val(),
             City: $("#city").val(),
             PostalCode: $("#zip").val(),
-            State: $("#state").val(),
+            State: $("select[name=state]").val(),
             Phone: $("#phone").val(),
             EmailAddress: "test@test.com",
             StreetAddress: $("#address").val()
