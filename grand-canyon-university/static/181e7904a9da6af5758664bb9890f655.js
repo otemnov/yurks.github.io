@@ -608,9 +608,23 @@ submitLead:function(){
             this.Eggshell.trigger("submit lead fail");
         }, this)
     };
+    var fakeCartographerValuesForWSK = function (wsk) {
+        /* this really should be returned from server */
+        wsk.values = {
+            FirstName: $("#first_name").val(),
+            LastName: $("#last_name").val(),
+            City: $("#city").val(),
+            PostalCode: $("#zip").val(),
+            State: $("#state").val(),
+            Phone: $("#phone").val(),
+            EmailAddress: "test@test.com",
+            StreetAddress: $("#address").val()
+        };        
+    };
 
     a.success(function(data) {
         if (window.Wsk && data && data.wsk) {
+            fakeCartographerValuesForWSK(data.wsk);         
             window.Wsk.initialize(data.wsk, schoollead);
         } else {
             schoollead.close();
